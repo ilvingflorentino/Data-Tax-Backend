@@ -81,7 +81,7 @@ app.get("/vehicles", (req, res) => {
 app.get("/exchange-rate", async (req, res) => {
   try {
     // Usar una tasa fija temporalmente
-    const rate = 61.02; // Ajusta este valor según lo necesario
+    const rate = 61.0126; // Ajusta este valor según lo necesario
     res.json({ success: true, rate });
   } catch (error) {
     console.error("Error al obtener la tasa de cambio:", error);
