@@ -1,7 +1,13 @@
-const express = require("express");
-const cors = require("cors");
-const fs = require("fs");
-const path = require("path");
+import express from "express";
+import cors from "cors";
+import fs from "fs";
+import path from "path";
+import axios from "axios";
+import { fileURLToPath } from "url";
+
+// Configuración para obtener __dirname en ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
@@ -69,6 +75,20 @@ app.get("/vehicles", (req, res) => {
         .json({ success: false, message: "Error al procesar los datos" });
     }
   });
+});
+
+// Endpoint para obtener la tasa de cambio (con tasa fija)
+app.get("/exchange-rate", async (req, res) => {
+  try {
+    // Usar una tasa fija temporalmente
+    const rate = 61.02; // Ajusta este valor según lo necesario
+    res.json({ success: true, rate });
+  } catch (error) {
+    console.error("Error al obtener la tasa de cambio:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Error al obtener la tasa de cambio" });
+  }
 });
 
 // Configuración del servidor
