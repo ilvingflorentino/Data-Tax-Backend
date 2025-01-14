@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import fs from "fs";
 import path from "path";
-import axios from "axios";
 import { fileURLToPath } from "url";
 
 // Configuración para obtener __dirname en ES Modules
@@ -81,7 +80,7 @@ app.get("/vehicles", (req, res) => {
 app.get("/exchange-rate", async (req, res) => {
   try {
     // Usar una tasa fija temporalmente
-    const rate = 61.0126; // Ajusta este valor según lo necesario
+    const rate = 59.54; // Ajusta este valor según lo necesario
     res.json({ success: true, rate });
   } catch (error) {
     console.error("Error al obtener la tasa de cambio:", error);
